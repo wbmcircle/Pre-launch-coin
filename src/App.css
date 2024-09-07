@@ -1,38 +1,265 @@
 .App {
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: #0A0A0A;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+}
+#outlined-description{
+  color: #fff;
+}
+.error{
+ color: #f14a4a;
 }
 
-.App-link {
-  color: #61dafb;
-}
+.img-reponsive{display: block;
+  max-width: 100%;
+  height: auto;}
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .headerOuter{
+    padding: 20px 0px 20px 0px;
+    align-items: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .headerOuter img{
+    width: 60px;
+  }
+
+  .headerLink{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .headerLink svg{
+    margin-left: 8px;
+  }
+
+  .bannerOuter{
+    padding-bottom: 40px;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .bannerLink{
+    background-color: #87878720;
+    padding: 10px 20px;
+    border-radius: 40px;
+  }
+  .userImage{
+    width: 100%;
+    max-width: 80px;
+  }
+  .modForm{
+    position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: #0A0A0A;
+  border: 2px solid #000;
+  box-shadow: 24;
+  padding: 20px;
+  }
+
+@media screen and (max-width: 375px) {
+  .modForm{
+    width: 300px;
+  }
+
+}
+
+  .filterOuter{
+    background-color: #87878720;
+    padding: 20px 20px;
+    border-radius: 10px;
+}
+
+#simple-select{
+  color: #fff;
+}
+
+.filter fieldset {
+  border-color: #fff;
+}
+
+.filter svg{
+  color: #fff;
+}
+.cardBox:last-child{
+  padding-bottom: 0 !important;
+}
+
+.formOuter input, .formOuter label{
+  color: #fff;
+}
+.pumpfun:before {
+  content: "";
+  display: block;
+  background: url(assets/exchang2.png);
+  width:50px;
+  height:50px;
+  float: left;
+  margin: 20px 6px 0px 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.moonshot:before {
+  content: "";
+  display: block;
+  background: url(assets/exchang1.png);
+  width:50px;
+  height:50px;
+  float: left;
+  margin: 20px 6px 0px 0px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+
+.profileOuter .MuiBadge-badge{
+  left: 50% !important;
+  bottom:7% !important; 
+}
+.btnStyle{
+  background-color: #000;
+    color: #fff;
+    width: max-content;
+    padding: 15px 30px;
+    border-radius: 30px;
+    box-shadow: rgba(95, 125, 147, 0.3) 0px 30px 60px -12px, rgba(95, 125, 147, 1) 0px 18px 36px -18px, rgba(95, 125, 147, 0.3) 0px -18px 60px -12px, rgba(95, 125, 147, 1) 0px -18px 36px -18px;
+
+    border-style: solid;
+    border-image-source: linear-gradient(90deg, rgba(96, 127, 150, 0) 10%, rgba(96, 127, 150, 1) 49%, rgba(96, 127, 150, 0) 90%);
+    border-width: 2px;
+    border-image-slice: 1;
+    border-left: 0;
+    border-right: 0;
+}
+
+.footer img{
+ width: 100%;
+ max-width: 60px;
+}
+
+.imageForm .MuiInputBase-formControl{
+margin-top: 0;
+}
+
+.radio-image-selector{
+  display: flex;
+}
+
+.radio-image-label input{
+  display: none;
+}
+
+.radio-image-label img{
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  border-radius: 50px;
+  object-fit: contain;
+  background-color: #fff;
+}
+
+.radio-image-label{
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.radio-image-label.selected img{
+  box-shadow: rgba(95, 125, 147, 0.3) 0px 30px 60px -12px, rgba(95, 125, 147, 1) 0px 18px 36px -18px, rgba(95, 125, 147, 0.3) 0px -18px 60px -12px, rgba(95, 125, 147, 1) 0px -18px 36px -18px;
+  border:2px solid #39abff;
+}
+
+.calenderDate .react-datetime-picker__wrapper{
+border: none;
+}
+
+.calenderDate .react-datetime-picker__button svg{
+ stroke: #fff;
+}
+
+.calenderDate .react-datetime-picker__inputGroup__divider, .calenderDate .react-datetime-picker__inputGroup__leadingZero{
+ color: #fff;
+}
+
+.calenderDate .react-datetime-picker__inputGroup__amPm{
+  color: #fff;
+  background-color: #29293a;
+}
+
+.calenderDate .react-datetime-picker__inputGroup{
+display: flex;
+align-items: center;
+padding-left: 10px;
+}
+
+.checkBlock svg{
+  color: #fff;
+}
+
+#accordionOuter{
+  background-color: transparent;
+  box-shadow: none;
+}
+
+#panel1-header{
+  padding: 0;
+ 
+
+}
+
+#accordionOuter .MuiAccordionSummary-expandIconWrapper svg{
+  color: #fff;
+}
+
+#panel1-header p{  
+  color: #fff;
+  font-weight: bold;}
+
+  #panel1-content .MuiAccordionDetails-root{
+    padding: 0;
+  }
+
+@media screen and (max-width: 768px) {
+  .bannerOuter h1, .formTitle{
+    font-size: 4rem !important;
+  }
+
+}
+
+@media screen and (max-width: 450px) {
+  .cardMedia{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .cardBox{
+    padding: 20px 0px 0px 0px !important;
+  }
+.carDesc{
+  padding-left: 0 !important;
+}
+
+.formTitle{
+  font-size: 2rem !important;
+}
+
+
+
+}
+
+@media screen and (max-width: 375px) {
+  .bannerOuter{
+    height: 200px;
+  }
+  .bannerOuter h1{
+    font-size: 2rem;
   }
 }
