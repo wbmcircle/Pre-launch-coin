@@ -1,10 +1,12 @@
-import { Box, FormControl, InputLabel, MenuItem, Paper, Select, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
-import { default as React, useState, useEffect } from 'react';
-import LIKE from '../assets/like.png'
-import COMMENT from '../assets/comments.png'
-import DEVICON from '../assets/check.png'
-import SOCIAL from '../assets/social.png'
-import COIN from "../assets/logo.png"
+import TuneIcon from '@mui/icons-material/Tune';
+import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Typography } from '@mui/material';
+import { default as React } from 'react';
+import Select from 'react-dropdown-select';
+import DEVICON from '../assets/check.png';
+import COMMENT from '../assets/comments.png';
+import LIKE from '../assets/like.png';
+import COIN from "../assets/logo.png";
+import SOCIAL from '../assets/social.png';
 
 const CryptoList = () => {
   const rows = [
@@ -19,91 +21,134 @@ const CryptoList = () => {
     }
   ];
 
+  const options = [
+    {
+      value: 1,
+      label: 'Leanne'
+    },
+    {
+      value: 2,
+      label: 'Ervin'
+    }
+  ];
 
   return (
     <Box>
-      <Box style={{ display: "flex", flexDirection: "row" }}>
-        <Typography variant="h6" noWrap>CryptoList</Typography>
-        <Box>
-          <FormControl fullWidth className='filter'>
-            <Select
-              labelId="simple-select"
-              id="simple-select"
-              value="Time"
-              onChange={() => { }}
-            >
-              <MenuItem value="Time">Time</MenuItem>
-              <MenuItem value="Most Likes">Most Likes</MenuItem>
-              <MenuItem value="Least Likes">Least Likes</MenuItem>
-              <MenuItem value="With Socials">With Socials</MenuItem>
-              <MenuItem value="Without Socials">Without Socials</MenuItem>
-            </Select>
-          </FormControl>
+      <Box style={{ display: "flex", flexDirection: "row", alignItems: 'center' }}>
+        <Box style={{ marginRight: 10 }}>
+          <Typography variant="h6" noWrap style={{ fontWeight: 'bold' }}>CryptoList</Typography>
         </Box>
-        <Box>
-          <FormControl fullWidth className='filter'>
-            <Select
-              labelId="simple-select"
-              id="simple-select"
-              value="Time"
-              onChange={() => { }}
-            >
-              <MenuItem value="Time">Time</MenuItem>
-              <MenuItem value="Most Likes">Most Likes</MenuItem>
-              <MenuItem value="Least Likes">Least Likes</MenuItem>
-              <MenuItem value="With Socials">With Socials</MenuItem>
-              <MenuItem value="Without Socials">Without Socials</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl fullWidth className='filter'>
-            <Select
-              labelId="simple-select"
-              id="simple-select"
-              value="Time"
-              onChange={() => { }}
-            >
-              <MenuItem value="Time">Time</MenuItem>
-              <MenuItem value="Most Likes">Most Likes</MenuItem>
-              <MenuItem value="Least Likes">Least Likes</MenuItem>
-              <MenuItem value="With Socials">With Socials</MenuItem>
-              <MenuItem value="Without Socials">Without Socials</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl fullWidth className='filter'>
-            <Select
-              labelId="simple-select"
-              id="simple-select"
-              value="Time"
-              onChange={() => { }}
-            >
-              <MenuItem value="Time">Time</MenuItem>
-              <MenuItem value="Most Likes">Most Likes</MenuItem>
-              <MenuItem value="Least Likes">Least Likes</MenuItem>
-              <MenuItem value="With Socials">With Socials</MenuItem>
-              <MenuItem value="Without Socials">Without Socials</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
-        <Box>
-          <FormControl fullWidth className='filter'>
-            <Select
-              labelId="simple-select"
-              id="simple-select"
-              value="Time"
-              onChange={() => { }}
-            >
-              <MenuItem value="Time">Time</MenuItem>
-              <MenuItem value="Most Likes">Most Likes</MenuItem>
-              <MenuItem value="Least Likes">Least Likes</MenuItem>
-              <MenuItem value="With Socials">With Socials</MenuItem>
-              <MenuItem value="Without Socials">Without Socials</MenuItem>
-            </Select>
-          </FormControl>
-        </Box>
+        <Select
+          options={options}
+          onChange={(value) => {
+            console.log("--->", value)
+          }}
+          color='black'
+          style={{
+            width: 215,
+            borderRadius: 20,
+            padding: "8px 12px",
+            marginRight: 10
+          }}
+          multi
+          contentRenderer={({ props, state }) => (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <TuneIcon style={{ marginRight: 8 }} />
+              Developer Plans {state.values.length}
+            </div>
+          )}
+          dropdownRenderer={({ props, state, methods }) => (
+            <div style={{ backgroundColor: '#0f0f0f' }}>
+              {props.options.map((option) => (
+                <div
+                  key={option.value}
+                  onClick={() => methods.addItem(option)}
+                  style={{
+                    padding: '8px 12px',
+                    cursor: 'pointer',
+                    backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f'
+                  }}
+                >
+                  {option.label}
+                </div>
+              ))}
+            </div>
+          )}
+        />
+        <Select
+          options={options}
+          onChange={(value) => {
+            console.log("--->", value)
+          }}
+          color='black'
+          style={{
+            width: 150,
+            borderRadius: 20,
+            padding: "8px 12px",
+            marginRight: 10
+          }}
+          multi
+          contentRenderer={({ props, state }) => (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <TuneIcon style={{ marginRight: 8 }} />
+              Times {state.values.length}
+            </div>
+          )}
+          dropdownRenderer={({ props, state, methods }) => (
+            <div style={{ backgroundColor: '#0f0f0f' }}>
+              {props.options.map((option) => (
+                <div
+                  key={option.value}
+                  onClick={() => methods.addItem(option)}
+                  style={{
+                    padding: '8px 12px',
+                    cursor: 'pointer',
+                    backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f'
+                  }}
+                >
+                  {option.label}
+                </div>
+              ))}
+            </div>
+          )}
+        />
+        <Select
+          options={options}
+          onChange={(value) => {
+            console.log("--->", value)
+          }}
+          color='black'
+          style={{
+            width: 150,
+            borderRadius: 20,
+            padding: "8px 12px",
+            marginRight: 10
+          }}
+          multi
+          contentRenderer={({ props, state }) => (
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+              <TuneIcon style={{ marginRight: 8 }} />
+              Likes {state.values.length}
+            </div>
+          )}
+          dropdownRenderer={({ props, state, methods }) => (
+            <div style={{ backgroundColor: '#0f0f0f' }}>
+              {props.options.map((option) => (
+                <div
+                  key={option.value}
+                  onClick={() => methods.addItem(option)}
+                  style={{
+                    padding: '8px 12px',
+                    cursor: 'pointer',
+                    backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f'
+                  }}
+                >
+                  {option.label}
+                </div>
+              ))}
+            </div>
+          )}
+        />
       </Box>
       <TableContainer component={Paper}>
         <Table>
@@ -124,7 +169,14 @@ const CryptoList = () => {
                 <TableCell>
                   <Box style={{ display: 'flex' }}>
                     <img src={COIN} alt="social" width={32} height={32} />
-                    {row.pairInfo}
+                    <Box style={{ display: 'flex', flexDirection: 'column' }}>
+                      <Box>
+                        {row.pairInfo}
+                      </Box>
+                      <Box>
+                        Launched
+                      </Box>
+                    </Box>
                   </Box>
                 </TableCell>
                 <TableCell>{row.launchTime}</TableCell>
@@ -135,7 +187,7 @@ const CryptoList = () => {
                 <TableCell>{row.bio}</TableCell>
                 <TableCell>
                   <Box style={{ display: "flex" }}>
-                    <Box style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
+                    <Box style={{ display: 'flex', flexDirection: "column", alignItems: 'center', paddingRight: 4 }}>
                       <img src={DEVICON} alt="devPlan" width={16} height={16} />
                       {row.developerPlans}
                     </Box>
@@ -146,12 +198,16 @@ const CryptoList = () => {
                   </Box>
                 </TableCell>
                 <TableCell>
-                  <img src={LIKE} alt="like" width={16} height={16} />
-                  {row.likes}
+                  <Box style={{ display: 'flex', justifyContent: "space-between" }}>
+                    <img src={LIKE} alt="like" width={16} height={16} />
+                    {row.likes}
+                  </Box>
                 </TableCell>
                 <TableCell>
-                  <img src={COMMENT} alt="comments" width={16} height={16} />
-                  {row.comments}
+                  <Box style={{ display: 'flex', justifyContent: "space-between" }}>
+                    <img src={COMMENT} alt="comments" width={16} height={16} />
+                    {row.comments}
+                  </Box>
                 </TableCell>
               </TableRow>
             ))}
