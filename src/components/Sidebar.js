@@ -1,9 +1,13 @@
-import { Box, Button, Stack, Typography } from '@mui/material';
-import React from 'react';
+import { Box, Button, Stack, Typography, TextField } from '@mui/material';
+import React, { useState } from 'react';
 import Logo from '../assets/logo.png';
 
 
 const Sidebar = () => {
+
+  const [showSignUp, setShowSignUp] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+
   return (
     <Box
       sx={{
@@ -11,7 +15,6 @@ const Sidebar = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         height: '100vh',
-        padding: 8,
         borderRadius: 1,
         overflow: "hidden",
         backgroundColor: "#2f3136",
@@ -91,13 +94,63 @@ const Sidebar = () => {
           72 Coins Launching Soon
         </Typography>
       </Stack>
-      <Stack
+      {showSignUp && !showLogin && <Stack
         direction="column"
-        alignItems="center"
+        alignItems="flex-start"
         justifyContent="center"
         spacing={2}
         sx={{ marginTop: 4 }}
       >
+        <Typography sx={{ fontSize: "14px" }}>Email</Typography>
+        <TextField
+          variant="outlined"
+          placeholder='Email'
+          fullWidth
+          InputProps={{
+            style: {
+              backgroundColor: '#40444b',
+              color: '#b9bbbe',
+              borderRadius: "8px",
+            }
+          }}
+        />
+        <Typography sx={{ fontSize: "14px", textAlign: "left" }}>Username</Typography>
+        <TextField
+          variant="outlined"
+          fullWidth
+          placeholder='Username'
+          InputProps={{
+            style: {
+              backgroundColor: '#40444b',
+              color: '#b9bbbe',
+              borderRadius: "8px",
+            }
+          }}
+          InputLabelProps={{
+            style: {
+              color: '#b9bbbe'
+            }
+          }}
+        />
+        <Typography sx={{ fontSize: "14px" }}>Password</Typography>
+        <TextField
+          type="password"
+          variant="outlined"
+          fullWidth
+          placeholder='Password'
+          InputProps={{
+            style: {
+              backgroundColor: '#40444b',
+              color: '#b9bbbe',
+              borderRadius: "8px",
+            }
+          }}
+          InputLabelProps={{
+            style: {
+              color: '#b9bbbe'
+            }
+          }}
+        />
         <Button
           variant="contained"
           sx={{
@@ -109,13 +162,153 @@ const Sidebar = () => {
             fontWeight: "bold",
             fontSize: "15.3px",
           }}
+          onClick={() => {
+            setShowLogin(false);
+            setShowSignUp(true);
+          }}
+        >
+          Create Account
+        </Button>
+        <Button
+          variant="contained"
+          sx={{
+            width: '100%',
+            height: 44,
+            backgroundColor: "transparent",
+            backgroundSize: "100% 100%",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "15.3px",
+          }}
+          onClick={() => {
+            setShowSignUp(false);
+            setShowLogin(true);
+          }}
+        >
+          Login Instead
+        </Button>
+      </Stack>}
+      {showLogin && !showSignUp && <Stack
+        direction="column"
+        alignItems="flex-start"
+        justifyContent="center"
+        spacing={2}
+        sx={{ marginTop: 4 }}
+      >
+        <Typography sx={{ fontSize: "14px", textAlign: "left" }}>Username</Typography>
+        <TextField
+          variant="outlined"
+          fullWidth
+          placeholder='Username'
+          InputProps={{
+            style: {
+              backgroundColor: '#40444b',
+              color: '#b9bbbe',
+              borderRadius: "8px",
+            }
+          }}
+          InputLabelProps={{
+            style: {
+              color: '#b9bbbe'
+            }
+          }}
+        />
+        <Typography sx={{ fontSize: "14px" }}>Password</Typography>
+        <TextField
+          type="password"
+          variant="outlined"
+          fullWidth
+          placeholder='Password'
+          InputProps={{
+            style: {
+              backgroundColor: '#40444b',
+              color: '#b9bbbe',
+              borderRadius: "8px",
+            }
+          }}
+          InputLabelProps={{
+            style: {
+              color: '#b9bbbe'
+            }
+          }}
+        />
+        <Button
+          variant="contained"
+          sx={{
+            width: '100%',
+            height: 44,
+            backgroundColor: "#5865F2",
+            backgroundSize: "100% 100%",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "15.3px",
+          }}
+          onClick={() => {
+            setShowSignUp(false);
+            setShowLogin(true);
+          }}
         >
           Login
         </Button>
-        <Typography variant="body2" color="#b9bbbe">
-          Create Account
-        </Typography>
-      </Stack>
+        <Button
+          variant="contained"
+          sx={{
+            width: '100%',
+            height: 44,
+            backgroundColor: "transparent",
+            backgroundSize: "100% 100%",
+            color: "white",
+            fontWeight: "bold",
+            fontSize: "15.3px",
+          }}
+          onClick={() => {
+            setShowLogin(false)
+            setShowSignUp(true)
+          }}
+        >
+          Create Account Instead
+        </Button>
+      </Stack>}
+      {!showSignUp && !showLogin &&
+        <Stack
+          direction="column"
+          alignItems="center"
+          justifyContent="center"
+          spacing={2}
+          sx={{ marginTop: 4 }}
+        >
+          <Button
+            variant="contained"
+            sx={{
+              width: '100%',
+              height: 44,
+              backgroundColor: "#5865F2",
+              backgroundSize: "100% 100%",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "15.3px",
+            }}
+            onClick={() => setShowLogin(true)}
+          >
+            Login
+          </Button>
+          <Button
+            variant="contained"
+            sx={{
+              width: '100%',
+              height: 44,
+              backgroundColor: "transparent",
+              backgroundSize: "100% 100%",
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "15.3px",
+            }}
+            onClick={() => setShowSignUp(true)}
+          >
+            Create Account
+          </Button>
+        </Stack>
+      }
     </Box>
   );
 };
