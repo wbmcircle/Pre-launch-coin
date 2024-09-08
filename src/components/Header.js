@@ -8,13 +8,15 @@ const Header = () => {
     <AppBar
       position="static"
       style={{
-        marginBottom: 20,
         backgroundImage: `url(${Background})`,
-        backgroundSize: 'cover'
+        backgroundSize: 'cover',
+        borderRadius: 10,
+        padding: 10,
+        marginBottom: 20,
       }} >
       <Toolbar style={{ display: 'flex', flexDirection: "column" }}>
-        <Typography variant="h4" noWrap style={{ fontSize: '24px', fontWeight: 'bold' }}>Find Your Next Crypto Community</Typography>
-        <Typography variant="h6" noWrap style={{ fontSize: '18px', }}>Pre-Launch Crypto Communities Helps Build Trust Before The Launch</Typography>
+        <Typography variant="h4" noWrap style={{ fontSize: '25px', fontWeight: 'bold', marginBottom: 10 }}>Find Your Next Crypto Community</Typography>
+        <Typography variant="h6" noWrap style={{ fontSize: '18px', marginBottom: 10 }}>Pre-Launch Crypto Communities Helps Build Trust Before The Launch</Typography>
         <Box style={{
           display: 'flex',
           alignItems: 'center',
@@ -22,12 +24,11 @@ const Header = () => {
           border: '1px solid #000',
           borderRadius: 8,
           padding: 8,
-          margin: 10,
-          minWidth: 500,
+          minWidth: 660,
           justifyContent: 'space-between'
         }}>
-          <InputBase placeholder="Explore communities…" style={{ color: 'grey' }} />
-          <SearchIcon style={{ color: 'grey' }} />
+          <InputBase placeholder="Explore Pre-Launch Crypto Pages" style={{ color: 'grey', fontSize: 17 }} />
+          <SearchIcon style={{ color: 'grey' }} height={17} />
         </Box>
       </Toolbar>
     </AppBar>

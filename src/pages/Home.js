@@ -8,10 +8,10 @@ const Home = () => {
   return (
     <div>
       <Grid container>
-        <Grid item xs={2}>
+        <Grid item style={{ flex: '0 0 20%' }}>
           <Sidebar />
         </Grid>
-        <Grid item xs={10}>
+        <Grid item style={{ flex: '0 0 80%' }}>
           <div style={{ padding: 20 }}>
             <Header />
             <CryptoList />

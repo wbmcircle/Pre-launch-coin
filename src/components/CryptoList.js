@@ -3,10 +3,16 @@ import { Box, Paper, Table, TableBody, TableCell, TableContainer, TableHead, Tab
 import { default as React } from 'react';
 import Select from 'react-dropdown-select';
 import DEVICON from '../assets/check.png';
-import COMMENT from '../assets/comments.png';
+import COMMENT from '../assets/noun-comment.svg';
 import LIKE from '../assets/like.png';
 import COIN from "../assets/logo.png";
 import SOCIAL from '../assets/social.png';
+import VerifiedIcon from '@mui/icons-material/Verified'
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import CommentIcon from '@mui/icons-material/Comment';
+import XIcon from '@mui/icons-material/X';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 
 const CryptoList = () => {
   const rows = [
@@ -34,7 +40,15 @@ const CryptoList = () => {
 
   return (
     <Box>
-      <Box style={{ display: "flex", flexDirection: "row", alignItems: 'center' }}>
+      <Box sx={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: 'center',
+        backgroundColor: "#1e1e1e",
+        padding: "8px 12px",
+        borderTopRightRadius: 10,
+        borderTopLeftRadius: 10
+      }}>
         <Box style={{ marginRight: 10 }}>
           <Typography variant="h6" noWrap style={{ fontWeight: 'bold' }}>CryptoList</Typography>
         </Box>
@@ -150,7 +164,7 @@ const CryptoList = () => {
           )}
         />
       </Box>
-      <TableContainer component={Paper}>
+      <TableContainer component={Paper} >
         <Table>
           <TableHead>
             <TableRow>
@@ -163,7 +177,9 @@ const CryptoList = () => {
               <TableCell>Comments</TableCell>
             </TableRow>
           </TableHead>
-          <TableBody>
+          <TableBody sx={{
+            backgroundColor: "#2F3136"
+          }}>
             {rows.map((row) => (
               <TableRow key={row.name}>
                 <TableCell>
@@ -179,33 +195,40 @@ const CryptoList = () => {
                     </Box>
                   </Box>
                 </TableCell>
-                <TableCell>{row.launchTime}</TableCell>
                 <TableCell>
-                  <img src={SOCIAL} alt="social" width={16} height={16} />
-                  {/* {row.socials} */}
+                  <Box>
+                    <QueryBuilderIcon sx={{
+                      height: 14,
+                      width: 14
+                    }} />
+                    {row.launchTime}
+                  </Box>
+                </TableCell>
+                <TableCell>
+                  <XIcon sx={{ color: 'grey' }} />
                 </TableCell>
                 <TableCell>{row.bio}</TableCell>
                 <TableCell>
                   <Box style={{ display: "flex" }}>
                     <Box style={{ display: 'flex', flexDirection: "column", alignItems: 'center', paddingRight: 4 }}>
-                      <img src={DEVICON} alt="devPlan" width={16} height={16} />
+                      <VerifiedIcon sx={{ color: 'green' }} />
                       {row.developerPlans}
                     </Box>
                     <Box style={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
-                      <img src={DEVICON} alt="devPlan" width={16} height={16} />
+                      <VerifiedIcon sx={{ color: 'green' }} />
                       {row.developerPlans}
                     </Box>
                   </Box>
                 </TableCell>
                 <TableCell>
                   <Box style={{ display: 'flex', justifyContent: "space-between" }}>
-                    <img src={LIKE} alt="like" width={16} height={16} />
+                    <FavoriteIcon sx={{ color: 'red' }} />
                     {row.likes}
                   </Box>
                 </TableCell>
                 <TableCell>
                   <Box style={{ display: 'flex', justifyContent: "space-between" }}>
-                    <img src={COMMENT} alt="comments" width={16} height={16} />
+                    <CommentIcon />
                     {row.comments}
                   </Box>
                 </TableCell>
