@@ -1,5 +1,5 @@
 import { Box, Button, Stack, Typography, TextField } from '@mui/material';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Logo from '../assets/logo.png';
 
 
@@ -7,6 +7,62 @@ const Sidebar = () => {
 
   const [showSignUp, setShowSignUp] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
+  const [userName, setUserName] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userPwd, setUserPwd] = useState("");
+
+  const signUp = async () => {
+    return;
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signup`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: userName,
+        email: userEmail,
+        password: userPwd,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Sign up successful:', data);
+      setShowSignUp(false);
+      setShowLogin(true);
+      // Handle successful sign up (e.g., redirect, show message)
+    } else {
+      const errorData = await response.json();
+      console.error('Sign up error:', errorData);
+      // Handle sign up error (e.g., show error message)
+    }
+  }
+
+  const logIn = async () => {
+    return;
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/signin`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        username: userName,
+        password: userPwd,
+      }),
+    });
+
+    if (response.ok) {
+      const data = await response.json();
+      console.log('Sign In successful:', data);
+      setShowSignUp(false);
+      setShowLogin(false);
+      // Handle successful sign in (e.g., redirect, show message)
+    } else {
+      const errorData = await response.json();
+      console.error('Sign In error:', errorData);
+      // Handle sign in error (e.g., show error message)
+    }
+  }
 
   return (
     <Box
@@ -15,6 +71,7 @@ const Sidebar = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         height: '100vh',
+        position: "sticky",
         borderRadius: 1,
         overflow: "hidden",
         backgroundColor: "#2f3136",
@@ -106,6 +163,8 @@ const Sidebar = () => {
           variant="outlined"
           placeholder='Email'
           fullWidth
+          value={userEmail}
+          onChange={(e) => setUserEmail(e.target.value)}
           InputProps={{
             style: {
               backgroundColor: '#40444b',
@@ -119,6 +178,8 @@ const Sidebar = () => {
           variant="outlined"
           fullWidth
           placeholder='Username'
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           InputProps={{
             style: {
               backgroundColor: '#40444b',
@@ -138,6 +199,8 @@ const Sidebar = () => {
           variant="outlined"
           fullWidth
           placeholder='Password'
+          value={userPwd}
+          onChange={(e) => setUserPwd(e.target.value)}
           InputProps={{
             style: {
               backgroundColor: '#40444b',
@@ -159,13 +222,11 @@ const Sidebar = () => {
             backgroundColor: "#5865F2",
             backgroundSize: "100% 100%",
             color: "white",
+            textTransform: 'none',
             fontWeight: "bold",
             fontSize: "15.3px",
           }}
-          onClick={() => {
-            setShowLogin(false);
-            setShowSignUp(true);
-          }}
+          onClick={signUp}
         >
           Create Account
         </Button>
@@ -177,6 +238,7 @@ const Sidebar = () => {
             backgroundColor: "transparent",
             backgroundSize: "100% 100%",
             color: "white",
+            textTransform: 'none',
             fontWeight: "bold",
             fontSize: "15.3px",
           }}
@@ -200,6 +262,8 @@ const Sidebar = () => {
           variant="outlined"
           fullWidth
           placeholder='Username'
+          value={userName}
+          onChange={(e) => setUserName(e.target.value)}
           InputProps={{
             style: {
               backgroundColor: '#40444b',
@@ -219,6 +283,8 @@ const Sidebar = () => {
           variant="outlined"
           fullWidth
           placeholder='Password'
+          value={userPwd}
+          onChange={(e) => setUserPwd(e.target.value)}
           InputProps={{
             style: {
               backgroundColor: '#40444b',
@@ -240,13 +306,11 @@ const Sidebar = () => {
             backgroundColor: "#5865F2",
             backgroundSize: "100% 100%",
             color: "white",
+            textTransform: 'none',
             fontWeight: "bold",
             fontSize: "15.3px",
           }}
-          onClick={() => {
-            setShowSignUp(false);
-            setShowLogin(true);
-          }}
+          onClick={logIn}
         >
           Login
         </Button>
@@ -259,6 +323,7 @@ const Sidebar = () => {
             backgroundSize: "100% 100%",
             color: "white",
             fontWeight: "bold",
+            textTransform: 'none',
             fontSize: "15.3px",
           }}
           onClick={() => {
@@ -285,6 +350,7 @@ const Sidebar = () => {
               backgroundColor: "#5865F2",
               backgroundSize: "100% 100%",
               color: "white",
+              textTransform: 'none',
               fontWeight: "bold",
               fontSize: "15.3px",
             }}
@@ -300,6 +366,7 @@ const Sidebar = () => {
               backgroundColor: "transparent",
               backgroundSize: "100% 100%",
               color: "white",
+              textTransform: 'none',
               fontWeight: "bold",
               fontSize: "15.3px",
             }}

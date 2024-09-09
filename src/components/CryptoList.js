@@ -1,21 +1,18 @@
+import CommentIcon from '@mui/icons-material/Comment';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
+import TelegramIcon from '@mui/icons-material/Telegram';
 import TuneIcon from '@mui/icons-material/Tune';
-import { Box, Paper, Table, TableBody, TableContainer, TableHead, TableRow, Typography, makeStyles } from '@mui/material';
+import VerifiedIcon from '@mui/icons-material/Verified';
+import XIcon from '@mui/icons-material/X';
+import { Box, TableRow, Typography } from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { default as React } from 'react';
-import styled from 'styled-components';
 import Select from 'react-dropdown-select';
-import DEVICON from '../assets/check.png';
-import LIKE from '../assets/like.png';
+import styled from 'styled-components';
+import COIN1 from '../assets/exchang1.png';
+import COIN2 from '../assets/exchang2.png';
 import LOGO from "../assets/logo.png";
-import COIN1 from '../assets/exchang1.png'
-import COIN2 from '../assets/exchang2.png'
-import SOCIAL from '../assets/social.png';
-import VerifiedIcon from '@mui/icons-material/Verified'
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import CommentIcon from '@mui/icons-material/Comment';
-import XIcon from '@mui/icons-material/X';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import QueryBuilderIcon from '@mui/icons-material/QueryBuilder';
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
   '&:nth-of-type(odd)': {
@@ -43,7 +40,7 @@ const CryptoList = () => {
       bio: "The Door is opened",
       developerPlans: "Original Meme",
       likes: "433",
-      comments: "3234"
+      comments: "512"
     },
     {
       pairInfo: "$door/Sol",
@@ -329,7 +326,7 @@ const CryptoList = () => {
       </Box>
       <Box>
         {rows.map((row, index) => (
-          <Box key={row.name} sx={{
+          <Box key={row.comments} sx={{
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
@@ -365,11 +362,11 @@ const CryptoList = () => {
             </Box>
             <Box sx={{ width: '30%', color: "#B9BBBE", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Box sx={{ display: 'flex', flexDirection: "column", alignItems: 'center', paddingRight: 4 }}>
-                <VerifiedIcon sx={{ color: 'green' }} />
+                <VerifiedIcon sx={{ color: '#3BA55C', height: "18px" }} htmlColor='white' />
                 {row.developerPlans}
               </Box>
               <Box sx={{ display: 'flex', flexDirection: "column", alignItems: 'center' }}>
-                <VerifiedIcon sx={{ color: 'green' }} />
+                <VerifiedIcon sx={{ color: '#3BA55C', height: "18px" }} />
                 {row.developerPlans}
               </Box>
             </Box>
