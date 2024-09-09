@@ -2,7 +2,7 @@ import CommentIcon from '@mui/icons-material/Comment';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import TuneIcon from '@mui/icons-material/Tune';
 import XIcon from '@mui/icons-material/X';
-import { Avatar, Box, Button, Card, CardContent, CardMedia, Grid, Typography } from '@mui/material';
+import { Avatar, Box, Button, Card, CardContent, CardMedia, Grid, Typography, useTheme } from '@mui/material';
 import * as React from 'react';
 import Select from 'react-dropdown-select';
 import avatar from "../assets/avatar.png";
@@ -75,7 +75,6 @@ const topDevs = [
       { name: "$orange/SOL", status: "Launching Later", image: Coin }
     ]
   },
-  // Add more developers as needed
 ];
 
 const options = [
@@ -108,18 +107,25 @@ const filterOptions = [
 ]
 
 export default function TopDeveloper() {
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+
   return (
     <Box>
       <Box className="mb-3" sx={{
-        backgroundColor: "#202225",
+        backgroundColor: isDarkMode ? "#202225" : "#F2F3F5",
         padding: "12px 0",
         borderRadius: 3,
+        border: isDarkMode ? "1px solid #303338" : "1px solid #e3e3e3"
       }}>
         <Box sx={{
           display: "flex",
           flexDirection: "row",
           alignItems: 'center',
-          paddingLeft: "12px"
+          paddingLeft: "12px",
+          color: isDarkMode ? "#FFFFFF" : "#060607",
+          fontWeight: "bold",
         }}>
           <Box style={{ marginRight: 16 }}>
             <Typography variant="h6" noWrap style={{ fontWeight: 'bold' }}>Top Developers</Typography>
@@ -147,7 +153,7 @@ export default function TopDeveloper() {
                     </div>
                   )}
                   dropdownRenderer={({ props, state, methods }) => (
-                    <div style={{ backgroundColor: '#0f0f0f' }}>
+                    <div sx={{ backgroundColor: isDarkMode ? "#202225" : "#F2F3F5", }}>
                       {props.options.map((option) => (
                         <div
                           key={option.value}
@@ -155,7 +161,7 @@ export default function TopDeveloper() {
                           style={{
                             padding: '8px 12px',
                             cursor: 'pointer',
-                            backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f',
+                            backgroundColor: state.values.includes(option) ? isDarkMode ? '#666666' : '#AAAAAA' : isDarkMode ? '#0F0F0F' : '#F0F0F0',
                             fontSize: "14px"
                           }}
                         >
@@ -174,7 +180,7 @@ export default function TopDeveloper() {
         <Grid container spacing={2}>
           {topDevs.map((dev) => (
             <Grid item xs={12} sm={6} md={3} key={dev.username}>
-              <Card sx={{ borderRadius: "20px", backgroundColor: "#2c2f33", color: "#fff" }}>
+              <Card sx={{ borderRadius: "20px", backgroundColor: isDarkMode ? "#2c2f33" : "#F2F3F5" }}>
                 <CardMedia
                   component="img"
                   height="140"
@@ -194,7 +200,7 @@ export default function TopDeveloper() {
                       <Avatar
                         alt={dev.name}
                         src={dev.avatar}
-                        sx={{ width: 75, height: 75, marginTop: '-50px', border: '5px solid #2c2f33' }}
+                        sx={{ width: 75, height: 75, marginTop: '-50px', border: isDarkMode ? '5px solid #2c2f33' : "5px solid #F2F3F5" }}
                       />
                       <Box>
                         <Typography variant="h1" component="div" sx={{ marginTop: 2, fontSize: "16px", marginTop: 0 }}>
@@ -211,19 +217,19 @@ export default function TopDeveloper() {
                         212
                       </Box>
                       <Box sx={{ color: "#B9BBBE", display: 'flex', alignItems: 'center', justifyContent: 'space-evenly', fontSize: "12px" }}>
-                        <CommentIcon sx={{ height: 15, color: "white" }} />
+                        <CommentIcon sx={{ height: 15}} />
                         521
                       </Box>
                     </Box>
                   </Box>
-                  <Box sx={{ backgroundColor: "#17181A", borderRadius: "15px", padding: "12px 8px" }}>
+                  <Box sx={{ backgroundColor: isDarkMode ? "#17181A" : "#E4E5E7", borderRadius: "15px", padding: "12px 8px" }}>
                     <Box className="flex flex-row">
                       <Grid container spacing={2}>
                         <Grid item xs={6}>
                           <Button
                             sx={{
-                              backgroundColor: "#202225",
-                              color: "white",
+                              backgroundColor: isDarkMode ? "#202225" : "#D9DBDE",
+                              color: isDarkMode ? "#FFFFFF" : "#060607",
                               fontWeight: "bold",
                               textTransform: 'none',
                               fontSize: "12px",
@@ -242,7 +248,7 @@ export default function TopDeveloper() {
                         </Grid>
                         <Grid item xs={6}>
                           <Box>
-                            <Typography variant="h6" component="div" align='left' sx={{ fontSize: "12px", position: 'relative', display: 'inline-block', '::after': { content: '""', position: 'absolute', bottom: 0, left: 0, width: '100%', height: '1px', backgroundColor: 'white' } }}>
+                            <Typography variant="h6" component="div" align='left' sx={{ fontSize: "12px", position: 'relative', fontWeight: "bold", display: 'inline-block', '::after': { content: '""', position: 'absolute', bottom: 0, left: 0, width: '100%', height: '1px', backgroundColor: isDarkMode ? "#202225" : "#D9DBDE" } }}>
                               ABOUNT ME
                             </Typography>
                             <Typography variant="body2" sx={{ marginTop: 1, fontSize: "12px" }}>
@@ -255,11 +261,11 @@ export default function TopDeveloper() {
                     <Box className="p-2"
                       sx={{
                         marginTop: 2,
-                        borderTop: "1px solid #43414B",
-                        borderBottom: "1px solid #43414B",
+                        borderTop: isDarkMode ? "1px solid #43414B" : "1px solid #B7B5BF",
+                        borderBottom: isDarkMode ? "1px solid #43414B" : "1px solid #B7B5BF",
                       }}>
                       <Box className="flex flex-start">
-                        <Typography variant="h6" component="div" align='left' sx={{ fontSize: "13px", position: 'relative', display: 'inline-block', '::after': { content: '""', position: 'absolute', bottom: 0, left: 0, width: '100%', height: '1px', backgroundColor: 'white' } }}>
+                        <Typography variant="h6" component="div" align='left' sx={{ fontSize: "13px", position: 'relative', display: 'inline-block', '::after': { content: '""', position: 'absolute', bottom: 0, left: 0, width: '100%', height: '1px', backgroundColor: isDarkMode ? "#202225" : "#060607" } }}>
                           Crypto Communities
                         </Typography>
                       </Box>
@@ -270,7 +276,7 @@ export default function TopDeveloper() {
                               <Box className="flex flex-row items-center space-x-2">
                                 <img src={community.image} alt={community.name} className="w-8 h-8 " />
                                 <Box className="flex flex-col items-start justify-start">
-                                  <Typography variant="body2" sx={{ fontSize: "12px" }}>
+                                  <Typography variant="body2" sx={{ fontSize: "12px", fontWeight: 'bold' }}>
                                     {community.name}
                                   </Typography>
                                   <Typography variant="body2" sx={{ textAlign: "left", fontSize: "12px" }} className={`status-${community.status.toLowerCase().replace(' ', '-')}`}>

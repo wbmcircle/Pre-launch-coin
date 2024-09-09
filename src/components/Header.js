@@ -6,6 +6,7 @@ import React from 'react';
 import Background from '../assets/background.png';
 
 const Header = () => {
+
   return (
     <Box
       position="static"
@@ -23,6 +24,7 @@ const Header = () => {
         flexDirection: "column",
         backgroundImage: `url(${Background})`,
         backgroundSize: 'cover',
+        color: "white"
       }}>
         <Typography variant="h4" noWrap style={{ fontSize: '25px', fontWeight: 'bold', marginBottom: 10 }}>Find Your Next Crypto Community</Typography>
         <Typography variant="h6" noWrap style={{ fontSize: '18px', marginBottom: 10 }}>Pre-Launch Crypto Communities Helps Build Trust Before The Launch</Typography>

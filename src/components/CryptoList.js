@@ -5,7 +5,7 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 import TuneIcon from '@mui/icons-material/Tune';
 import VerifiedIcon from '@mui/icons-material/Verified';
 import XIcon from '@mui/icons-material/X';
-import { Box, TableRow, Typography } from '@mui/material';
+import { Box, TableRow, Typography, useTheme } from '@mui/material';
 import TableCell, { tableCellClasses } from '@mui/material/TableCell';
 import { default as React } from 'react';
 import Select from 'react-dropdown-select';
@@ -14,24 +14,11 @@ import COIN1 from '../assets/exchang1.png';
 import COIN2 from '../assets/exchang2.png';
 import LOGO from "../assets/logo.png";
 
-const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
-    backgroundColor: "#36393f",
-    border: "1px solid #2f3136",
-    borderRadius: "10px"
-  },
-  '&:nth-of-type(even)': {
-    backgroundColor: "#2f3136",
-  },
-}));
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
-  [`&.${tableCellClasses.body}`]: {
-    fontSize: 14,
-  },
-}));
-
 const CryptoList = () => {
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+
   const rows = [
     {
       pairInfo: "$door/Sol",
@@ -64,10 +51,31 @@ const CryptoList = () => {
     }
   ];
 
+  const filterOptions = [
+    {
+      name: "Network",
+    },
+    {
+      name: "Developer Plans"
+    },
+    {
+      name: "Times"
+    },
+    {
+      name: "Likes"
+    },
+    {
+      name: "Comments"
+    },
+    {
+      name: "Socials"
+    }
+  ]
+
   return (
     <Box>
       <Box className="mb-3" sx={{
-        backgroundColor: "#202225",
+        backgroundColor: isDarkMode ? "#202225" : "#F2F3F5",
         padding: "12px 0",
         borderRadius: 3,
       }}>
@@ -77,242 +85,53 @@ const CryptoList = () => {
           alignItems: 'center',
           paddingLeft: "8px"
         }}>
-          <Box style={{ marginRight: 10 }}>
+          <Box style={{ marginRight: 16 }}>
             <Typography variant="h6" noWrap style={{ fontWeight: 'bold' }}>CryptoList</Typography>
           </Box>
-          <Select
-            options={options}
-            onChange={(value) => {
-              console.log("--->", value)
-            }}
-            color='black'
-            style={{
-              width: 160,
-              borderRadius: 20,
-              padding: "4px 12px",
-              marginRight: 10,
-              fontSize: "14px"
-            }}
-            multi
-            contentRenderer={({ props, state }) => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TuneIcon style={{ marginRight: 8 }} />
-                Network {state.values.length}
-              </div>
-            )}
-            dropdownRenderer={({ props, state, methods }) => (
-              <div style={{ backgroundColor: '#0f0f0f' }}>
-                {props.options.map((option) => (
-                  <div
-                    key={option.value}
-                    onClick={() => methods.addItem(option)}
-                    style={{
-                      padding: '8px 12px',
-                      cursor: 'pointer',
-                      backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f',
-                      fontSize: "14px"
-                    }}
-                  >
-                    {option.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          />
-          <Select
-            options={options}
-            onChange={(value) => {
-              console.log("--->", value)
-            }}
-            color='black'
-            style={{
-              width: 215,
-              borderRadius: 20,
-              padding: "4px 12px",
-              marginRight: 10,
-              fontSize: "14px"
-            }}
-            multi
-            contentRenderer={({ props, state }) => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TuneIcon style={{ marginRight: 8 }} />
-                Developer Plans {state.values.length}
-              </div>
-            )}
-            dropdownRenderer={({ props, state, methods }) => (
-              <div style={{ backgroundColor: '#0f0f0f' }}>
-                {props.options.map((option) => (
-                  <div
-                    key={option.value}
-                    onClick={() => methods.addItem(option)}
-                    style={{
-                      padding: '8px 12px',
-                      cursor: 'pointer',
-                      backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f',
-                      fontSize: "14px"
-                    }}
-                  >
-                    {option.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          />
-          <Select
-            options={options}
-            onChange={(value) => {
-              console.log("--->", value)
-            }}
-            color='black'
-            style={{
-              width: 150,
-              borderRadius: 20,
-              padding: "4px 12px",
-              marginRight: 10,
-              fontSize: "14px"
-            }}
-            multi
-            contentRenderer={({ props, state }) => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TuneIcon style={{ marginRight: 8 }} />
-                Times {state.values.length}
-              </div>
-            )}
-            dropdownRenderer={({ props, state, methods }) => (
-              <div style={{ backgroundColor: '#0f0f0f' }}>
-                {props.options.map((option) => (
-                  <div
-                    key={option.value}
-                    onClick={() => methods.addItem(option)}
-                    style={{
-                      padding: '8px 12px',
-                      cursor: 'pointer',
-                      backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f',
-                      fontSize: "14px"
-                    }}
-                  >
-                    {option.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          />
-          <Select
-            options={options}
-            onChange={(value) => {
-              console.log("--->", value)
-            }}
-            color='black'
-            style={{
-              width: 150,
-              borderRadius: 20,
-              padding: "4px 12px",
-              marginRight: 10,
-              fontSize: "14px"
-            }}
-            multi
-            contentRenderer={({ props, state }) => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TuneIcon style={{ marginRight: 8 }} />
-                Likes {state.values.length}
-              </div>
-            )}
-            dropdownRenderer={({ props, state, methods }) => (
-              <div style={{ backgroundColor: '#0f0f0f' }}>
-                {props.options.map((option) => (
-                  <div
-                    key={option.value}
-                    onClick={() => methods.addItem(option)}
-                    style={{
-                      padding: '8px 12px',
-                      cursor: 'pointer',
-                      backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f',
-                      fontSize: "14px"
-                    }}
-                  >
-                    {option.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          />
-          <Select
-            options={options}
-            onChange={(value) => {
-              console.log("--->", value)
-            }}
-            color='black'
-            style={{
-              width: 171,
-              borderRadius: 20,
-              padding: "4px 12px",
-              marginRight: 10,
-              fontSize: "14px"
-            }}
-            multi
-            contentRenderer={({ props, state }) => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TuneIcon style={{ marginRight: 8 }} />
-                Comments {state.values.length}
-              </div>
-            )}
-            dropdownRenderer={({ props, state, methods }) => (
-              <div style={{ backgroundColor: '#0f0f0f' }}>
-                {props.options.map((option) => (
-                  <div
-                    key={option.value}
-                    onClick={() => methods.addItem(option)}
-                    style={{
-                      padding: '8px 12px',
-                      cursor: 'pointer',
-                      fontSize: '14px',
-                      backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f'
-                    }}
-                  >
-                    {option.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          />
-          <Select
-            options={options}
-            onChange={(value) => {
-              console.log("--->", value)
-            }}
-            color='black'
-            style={{
-              width: 150,
-              borderRadius: 20,
-              padding: "4px 12px",
-              fontSize: "14px"
-            }}
-            multi
-            contentRenderer={({ props, state }) => (
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
-                <TuneIcon style={{ marginRight: 8 }} />
-                Socials {state.values.length}
-              </div>
-            )}
-            dropdownRenderer={({ props, state, methods }) => (
-              <div style={{ backgroundColor: '#0f0f0f' }}>
-                {props.options.map((option) => (
-                  <div
-                    key={option.value}
-                    onClick={() => methods.addItem(option)}
-                    style={{
-                      padding: '8px 12px',
-                      cursor: 'pointer',
-                      backgroundColor: state.values.includes(option) ? '#666' : '#0f0f0f',
-                      fontSize: "14px"
-                    }}
-                  >
-                    {option.label}
-                  </div>
-                ))}
-              </div>
-            )}
-          />
+          {filterOptions.map((filterOption) => {
+            return (
+              <Box className="mr-2">
+                <Select
+                  key={filterOption.name}
+                  options={options}
+                  onChange={(value) => {
+                    console.log("--->", value)
+                  }}
+                  color='black'
+                  style={{
+                    borderRadius: 20,
+                    padding: "4px 12px",
+                    fontSize: "14px"
+                  }}
+                  multi
+                  contentRenderer={({ props, state }) => (
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+                      <TuneIcon style={{ marginRight: 8 }} />
+                      {filterOption.name} {state.values.length}
+                    </div>
+                  )}
+                  dropdownRenderer={({ props, state, methods }) => (
+                    <div sx={{ backgroundColor: isDarkMode ? "#202225" : "#F2F3F5", }}>
+                      {props.options.map((option) => (
+                        <div
+                          key={option.value}
+                          onClick={() => methods.addItem(option)}
+                          style={{
+                            padding: '8px 12px',
+                            cursor: 'pointer',
+                            fontSize: "14px",
+                            backgroundColor: state.values.includes(option) ? isDarkMode ? '#666666' : '#AAAAAA' : isDarkMode ? '#0F0F0F' : '#F0F0F0',
+                          }}
+                        >
+                          {option.label}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                />
+              </Box>
+            );
+          })}
         </Box>
         <Box className="flex mt-2 text-center">
           <Typography style={{ flex: '0 0 13%', padding: "0 16px" }} className='text-center'>Pair Info</Typography>
@@ -330,8 +149,8 @@ const CryptoList = () => {
             display: 'flex',
             flexDirection: 'row',
             alignItems: 'center',
-            backgroundColor: index % 2 === 0 ? '#2f3136' : '#26272a',
-            border: '1px solid #26272a',
+            backgroundColor: isDarkMode ? index % 2 !== 0 && '#202225' : index % 2 !== 0 && '#F2F3F5',
+            border: isDarkMode ? '1px solid #202225' : "1px solid #F2F3F5",
             borderRadius: '8px',
             padding: '5px',
             position: "relative"
@@ -342,11 +161,23 @@ const CryptoList = () => {
               <img src={COIN1} alt='coin1' style={{ height: "12px", width: '12px' }} />
               <img src={COIN2} alt="coin2" style={{ height: "12px", width: '12px' }} />
             </Box>
-            <Box sx={{ width: '13%', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', paddingLeft: "20px" }}>
-              <img src={LOGO} alt="coin" style={{ height: "44px", width: "44px" }} />
-              <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: '12px', fontWeight: 'bold' }}>
-                <Typography sx={{ fontWeight: 'bold', color: "#B9BBBE" }}>{row.pairInfo}</Typography>
-                <Typography sx={{ fontWeight: 'bold', color: "#B9BBBE" }}>Launched</Typography>
+            <Box sx={{ width: '13%', display: 'flex', justifyContent: 'space-between', paddingLeft: "20px" }}>
+              <Box className="flex items-center justify-start">
+                <img src={LOGO} alt="coin" style={{ height: "44px", width: "44px" }} />
+                <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: '12px', fontWeight: 'bold' }}>
+                  <Typography sx={{ fontWeight: 'bold', color: "#B9BBBE" }}>{row.pairInfo}</Typography>
+                  <Typography sx={{ fontWeight: 'bold', color: "#B9BBBE" }}>Launched</Typography>
+                </Box>
+              </Box>
+              <Box className="flex items-end">
+                <Typography
+                  sx={{
+                    width: 10,
+                    height: 10,
+                    backgroundColor: "#8750e1",
+                    borderRadius: "50%",
+                  }}
+                ></Typography>
               </Box>
             </Box>
             <Box sx={{ width: '12%', color: "#B9BBBE", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>

@@ -1,28 +1,33 @@
+import { Button, CssBaseline } from '@mui/material';
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './pages/Home';
-import { ThemeProvider, createTheme, CssBaseline } from '@mui/material';
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { ThemeProviderWrapper, useThemeContext } from './contexts/ThemeContext';
 import './index.css';
+import Home from './pages/Home';
 
-const darkTheme = createTheme({
-  palette: {
-    mode: 'dark',
-    background: {
-      default: '#2F3136', 
-    },
-  },
-});
+function AppContent() {
+  const { toggleTheme } = useThemeContext();
 
-function App() {
   return (
-    <ThemeProvider theme={darkTheme}>
+    <>
       <CssBaseline />
+      <Button onClick={toggleTheme} variant="contained" style={{ position: 'absolute', top: 10, right: 20 }}>
+        Toggle Theme
+      </Button>
       <Router>
         <Routes>
           <Route path="/" element={<Home />} />
         </Routes>
       </Router>
-    </ThemeProvider>
+    </>
+  );
+};
+
+function App() {
+  return (
+    <ThemeProviderWrapper>
+      <AppContent />
+    </ThemeProviderWrapper>
   );
 }
 

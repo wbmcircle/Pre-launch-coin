@@ -1,9 +1,12 @@
-import { Box, Button, Stack, Typography, TextField } from '@mui/material';
+import { Box, Button, Stack, Typography, TextField, useTheme } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import Logo from '../assets/logo.png';
 
 
 const Sidebar = () => {
+
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
 
   const [showSignUp, setShowSignUp] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
@@ -70,13 +73,13 @@ const Sidebar = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        height: '100vh',
-        position: "sticky",
+        height: '100%',
+        position: "fixed",
         borderRadius: 1,
         overflow: "hidden",
-        backgroundColor: "#2f3136",
+        backgroundColor: isDarkMode ? "#2f3136" : "#F2F3F5",
         padding: 3,
-        borderRight: '5px solid #000'
+        borderRight: isDarkMode ? '5px solid #202225' : "5px solid #E3E5E8"
       }}
     >
       <Box
@@ -101,7 +104,7 @@ const Sidebar = () => {
         <Typography
           variant="h6"
           align="center"
-          color="#b9bbbe"
+          // color="#b9bbbe"
           sx={{
             marginTop: 2,
             fontSize: 15
@@ -112,7 +115,7 @@ const Sidebar = () => {
         <Typography
           variant="h4"
           align="center"
-          color="white"
+          // color="white"
           fontWeight="bold"
           sx={{
             marginTop: 1,
@@ -124,7 +127,7 @@ const Sidebar = () => {
         <Typography
           variant="body1"
           align="center"
-          color="#b9bbbe"
+          // color="#b9bbbe"
           sx={{
             marginTop: 1
           }}
@@ -237,7 +240,7 @@ const Sidebar = () => {
             height: 44,
             backgroundColor: "transparent",
             backgroundSize: "100% 100%",
-            color: "white",
+            color: isDarkMode ? "#B9BBBE" : "#4F5660",
             textTransform: 'none',
             fontWeight: "bold",
             fontSize: "15.3px",
@@ -305,7 +308,6 @@ const Sidebar = () => {
             height: 44,
             backgroundColor: "#5865F2",
             backgroundSize: "100% 100%",
-            color: "white",
             textTransform: 'none',
             fontWeight: "bold",
             fontSize: "15.3px",
@@ -321,7 +323,7 @@ const Sidebar = () => {
             height: 44,
             backgroundColor: "transparent",
             backgroundSize: "100% 100%",
-            color: "white",
+            color: isDarkMode ? "#B9BBBE" : "#4F5660",
             fontWeight: "bold",
             textTransform: 'none',
             fontSize: "15.3px",
@@ -365,7 +367,7 @@ const Sidebar = () => {
               height: 44,
               backgroundColor: "transparent",
               backgroundSize: "100% 100%",
-              color: "white",
+              color: isDarkMode ? "#B9BBBE" : "#4F5660",
               textTransform: 'none',
               fontWeight: "bold",
               fontSize: "15.3px",

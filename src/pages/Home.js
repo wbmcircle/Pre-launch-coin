@@ -18,7 +18,7 @@ const Home = () => {
         </Grid>
         <Grid item style={{ flex: '0 0 80%' }}>
           <div style={{ padding: "10px 20px" }}>
-            <Navbar setCryptoList={setCryptoList} />
+            <Navbar cryptoList={cryptoList} setCryptoList={setCryptoList} />
             <Header />
             {cryptoList ?
               <CryptoList />
