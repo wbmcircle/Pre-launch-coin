@@ -1,18 +1,20 @@
 import { Search as SearchIcon } from '@mui/icons-material';
 import EmojiEmotionsIcon from '@mui/icons-material/EmojiEmotions';
 import PersonIcon from '@mui/icons-material/Person';
-import { AppBar, Box, Button, InputBase, Toolbar, Typography } from '@mui/material';
+import { AppBar, Box, Button, InputBase, Toolbar, Typography, useTheme } from '@mui/material';
 import React from 'react';
 import Background from '../assets/background.png';
 
 const Header = () => {
 
+  const theme = useTheme();
+  const isDarkMode = theme.palette.mode === 'dark';
+
   return (
     <Box
       position="static"
       style={{
-        // backgroundImage: `url(${Background})`,
-        // backgroundSize: 'cover',
+        
         borderRadius: 10,
         marginBottom: 20,
       }} >

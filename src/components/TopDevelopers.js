@@ -117,7 +117,7 @@ export default function TopDeveloper() {
         backgroundColor: isDarkMode ? "#202225" : "#F2F3F5",
         padding: "12px 0",
         borderRadius: 3,
-        border: isDarkMode ? "1px solid #303338" : "1px solid #e3e3e3"
+        border: isDarkMode ? "1px solid #303338" : "1px solid #e3e3e3",
       }}>
         <Box sx={{
           display: "flex",
@@ -126,6 +126,7 @@ export default function TopDeveloper() {
           paddingLeft: "12px",
           color: isDarkMode ? "#FFFFFF" : "#060607",
           fontWeight: "bold",
+          // backgroundColor: isDarkMode? "transparent" : ""
         }}>
           <Box style={{ marginRight: 16 }}>
             <Typography variant="h6" noWrap style={{ fontWeight: 'bold' }}>Top Developers</Typography>
@@ -203,10 +204,10 @@ export default function TopDeveloper() {
                         sx={{ width: 75, height: 75, marginTop: '-50px', border: isDarkMode ? '5px solid #2c2f33' : "5px solid #F2F3F5" }}
                       />
                       <Box>
-                        <Typography variant="h1" component="div" sx={{ marginTop: 2, fontSize: "16px", marginTop: 0 }}>
+                        <Typography variant="h1" component="div" sx={{ fontSize: "16px"}}>
                           {dev.name}
                         </Typography>
-                        <Typography variant="h1" component="div" sx={{ marginTop: 2, fontSize: "14px", marginTop: 0 }}>
+                        <Typography variant="h1" component="div" sx={{ fontSize: "14px" }}>
                           {dev.username}
                         </Typography>
                       </Box>

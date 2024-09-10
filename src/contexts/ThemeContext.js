@@ -4,7 +4,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 const ThemeContext = createContext();
 
 export const ThemeProviderWrapper = ({ children }) => {
-  const [mode, setMode] = useState('light');
+  const [mode, setMode] = useState('dark');
 
   useEffect(() => {
     document.body.className = mode === 'light' ? '' : 'dark-mode';

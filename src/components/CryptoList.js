@@ -165,8 +165,8 @@ const CryptoList = () => {
               <Box className="flex items-center justify-start">
                 <img src={LOGO} alt="coin" style={{ height: "44px", width: "44px" }} />
                 <Box sx={{ display: 'flex', flexDirection: 'column', marginLeft: '12px', fontWeight: 'bold' }}>
-                  <Typography sx={{ fontWeight: 'bold', color: "#B9BBBE" }}>{row.pairInfo}</Typography>
-                  <Typography sx={{ fontWeight: 'bold', color: "#B9BBBE" }}>Launched</Typography>
+                  <Typography sx={{ fontWeight: 'bold' }}>{row.pairInfo}</Typography>
+                  <Typography sx={{ fontWeight: 'bold' }}>Launched</Typography>
                 </Box>
               </Box>
               <Box className="flex items-end">
@@ -180,7 +180,7 @@ const CryptoList = () => {
                 ></Typography>
               </Box>
             </Box>
-            <Box sx={{ width: '12%', color: "#B9BBBE", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ width: '12%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <QueryBuilderIcon sx={{ height: 14 }} />
               {row.launchTime}
             </Box>
@@ -188,10 +188,10 @@ const CryptoList = () => {
               <XIcon sx={{ color: 'grey', height: "14px" }} />
               <TelegramIcon sx={{ color: 'grey', height: "14px" }} />
             </Box>
-            <Box sx={{ width: '15%', color: "#B9BBBE", display: 'flex', justifyContent: 'center' }}>
+            <Box sx={{ width: '15%', display: 'flex', justifyContent: 'center' }}>
               {row.bio}
             </Box>
-            <Box sx={{ width: '30%', color: "#B9BBBE", display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <Box sx={{ width: '30%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
               <Box sx={{ display: 'flex', flexDirection: "column", alignItems: 'center', paddingRight: 4 }}>
                 <VerifiedIcon sx={{ color: '#3BA55C', height: "18px" }} htmlColor='white' />
                 {row.developerPlans}
@@ -201,13 +201,13 @@ const CryptoList = () => {
                 {row.developerPlans}
               </Box>
             </Box>
-            <Box sx={{ width: '10%', color: "#B9BBBE", display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
+            <Box sx={{ width: '10%', display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
               <FavoriteIcon sx={{ color: 'red' }} />
               {row.likes}
             </Box>
             <Box sx={{ width: '10%', display: 'flex', alignItems: 'center', justifyContent: 'space-evenly' }}>
               <CommentIcon />
-              <Typography sx={{ fontSize: "14px", color: "#B9BBBE" }}>
+              <Typography sx={{ fontSize: "14px" }}>
                 {row.comments}
               </Typography>
             </Box>
